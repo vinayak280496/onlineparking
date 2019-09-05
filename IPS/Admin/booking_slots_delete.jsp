@@ -1,0 +1,16 @@
+ <%@page import="java.sql.*"%>
+  <%@page import="ips.dbconnect"%>
+  <jsp:useBean id="d" class="ips.dbconnect"/>
+  <jsp:getProperty name="d" property="conn"/>
+  
+  <%
+  String id=request.getParameter("delete");
+  
+  int z=d.stmt.executeUpdate("delete from booked_parking_slots where booking_id="+id+" ");
+  //out.println("delete from booked_parking_slots where booking_id="+id+" ");
+  %>
+  
+  <script>
+  alert("values are deleted....");
+  document.location="booking_slots_view.jsp";
+  </script>
